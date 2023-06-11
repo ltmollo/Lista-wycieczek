@@ -1,0 +1,103 @@
+h1{
+    text-align: center;
+    color: black;
+    text-shadow: 2px 4px white;
+    font-size: 50px;
+    font-family: fantasy;
+    margin: 15px;
+    text-align: center;
+}
+
+#background{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+#mainContainer{
+    width: 700px;
+    background-color: #0096c7;
+    border-radius: 10px;
+}
+
+#persitence{
+    width: 100%;
+    text-align: center;
+    font-size: 25px
+}
+
+#choose{
+    font-size: 20px;
+    margin: 0;
+}
+
+.container{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+select{
+    margin-left: 20px;
+    height: 20px;
+}
+
+.userContainer{
+    border-top: 1px solid black;
+    display:flex;
+}
+
+.user{
+    width: 300px;
+    align-self: center;
+    margin-left: 15px;
+}
+
+.changeContainer{
+    display: flex;
+    justify-content: space-between;
+    width: 250px;
+}
+
+.changeBut{
+    width: 70px;
+    height: 25px;
+    align-self: center;
+    border-radius: 5px;
+    transition: 1s;
+    color: white;
+    text-align: center;
+    text-shadow: 2px 2px black;
+}
+
+.changeBut:hover{
+    background-color: black;
+    color: white;
+}
+
+.givePerm{
+    background-color: rgb(23, 147, 23);
+}
+
+.takePerm{
+    background: rgb(188, 56, 56);
+}
+
+p{
+    font-size: 20px;
+}
+
+@media only screen and (max-width: 700px){
+    #mainContainer{
+        width: 100%;
+    }
+
+    p{
+        font-size: 15px;
+    }
+
+    .user{
+        width: 250px;
+    }
+}

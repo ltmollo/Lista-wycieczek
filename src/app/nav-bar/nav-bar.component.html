@@ -1,0 +1,20 @@
+<nav>
+    <div id="logoContainer">
+        <h1>Travel World</h1>
+    </div>
+
+    <input type="checkbox">
+    <span class = "bar1"></span>
+    <span class = "bar2"></span>
+    <span class = "bar3"></span>
+    <span class = "bar4"></span>
+
+    <app-basket *ngIf="auth.userRoles?.client"></app-basket>
+    <div id="container">
+        <a routerLink="/mainPage" routerLinkActive="active"><div class="link">Strona główna</div></a>
+        <a routerLink="/trips" routerLinkActive="active"><div class="link">Wycieczki</div></a>
+        <a routerLink="/addTrip" routerLinkActive="active" *ngIf="auth.userRoles?.manager"><div class="link">Edycja wycieczek</div></a>
+        <a routerLink="/history" routerLinkActive="active" *ngIf="auth.userRoles?.client"><div class="link">Historia kupna</div></a>
+        <a routerLink="/adminDashboard" routerLinkActive="active" *ngIf="auth.userRoles?.admin"><div class="link">Dashboard</div></a>
+    </div>
+</nav>

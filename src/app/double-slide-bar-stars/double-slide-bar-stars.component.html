@@ -1,0 +1,12 @@
+
+<div class="wrapper">
+    <div class="values">
+        <p *ngIf="maxStarsWanted != 0">{{lowestStarsWanted}} - {{maxStarsWanted}}</p>
+    </div>
+    <div class="container">
+        <div class="sliderTrack" #sideTrack></div>
+        <input type="range" #firstSlider min=0  max=5 value="{{lowestStarsWanted}}" id="slider-1" (change)="slideOne(firstSlider , sideTrack)">
+        <input type="range" #secondSlider min=0 max=5 value="{{maxStarsWanted}}" id="slider-2" (change)="slideTwo(secondSlider, sideTrack)">
+    </div>
+    {{loadPage(firstSlider, secondSlider, sideTrack)}}
+</div>

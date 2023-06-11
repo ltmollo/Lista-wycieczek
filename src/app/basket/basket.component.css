@@ -1,0 +1,122 @@
+input{
+    width: 70px;
+    height: 70px;
+    position: relative;
+    z-index: 1;
+    opacity: 0;
+    margin: 0;
+}
+
+img{
+    width: 65px;
+    height: 65px;
+}
+
+#container{
+    width: 70px;
+    height: 70px;
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 1s;
+}
+
+#basket{
+    position: absolute;
+    width: 70px;
+    height: 70px;
+    top: 20px;
+    right: 15px;
+    border-radius: 10px;
+    background-color: aliceblue;
+    transition: 1s ease all;
+}
+
+#basket:hover #container{
+    opacity: 0.2;
+}
+
+#toRollBasket{
+    position: absolute;
+    right: 0px;
+    max-height: 0;
+    overflow: hidden;
+    transition: 1s ease all;
+    border-radius: 10px;
+    z-index: 1;
+}
+
+input:checked ~ #toRollBasket{
+    max-height: 3000px;
+}
+
+input:not(:checked) ~ #toRollBasket{
+    max-height: 0;
+}
+
+.productsInBasket{
+    display: flex;
+    width: 270px;
+    padding: 10px;
+    align-content: space-between;
+    border-bottom: 1px solid black;
+    align-items: center;
+    background-color: #93deff;
+}
+
+.name{
+    width: 200px;
+    box-sizing: content-box;
+}
+
+.amount{
+    width: 40px;
+    margin-left: 15px;
+    margin-right: 15px;
+    text-align: center;
+}
+
+
+img{
+    width: 50px;
+    height: 50px;
+    user-select: none;
+}
+
+a{
+    text-decoration: none;
+}
+
+.link{
+    text-align: center;
+    height: 40px;
+    padding: 10px;
+    box-sizing: border-box;
+    transition: 1s;
+    background-color: white;
+}
+
+.link:hover{
+    background-color: blue;
+    color: white;
+}
+
+#emptyBask{
+    width: 100%;
+    text-align: center;
+    font-size: 25px;
+}
+
+#amount{
+    border: 1px solid black;
+    min-width: 20px;
+    background-color: rgb(255, 255, 255);
+    height: 20px;
+    text-align: center;
+    border-radius: 100%;
+    position: absolute;
+    left: 0px;
+    bottom: 0;
+    padding: 2px;
+}

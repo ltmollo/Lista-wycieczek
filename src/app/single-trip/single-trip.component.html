@@ -1,0 +1,39 @@
+<div id="background">
+    <div id="leftCont">
+        <a routerLink="/trips" routerLinkActive="active"><div id="comeback">🠔 Powrót</div></a>
+    </div>
+
+    <div id="mainContent" *ngFor="let trip of trips">
+        <h1>{{trip.name}}</h1>
+        <div id="slider">
+            <div id="swapCont">
+                <div class="swap" id="left" (click)="swipLeft()"> < </div>
+                <div class="swap" id="right" (click)="swipRight()"> > </div>
+            </div>
+            <img src={{changeLink()}}>
+        </div>
+
+        <div id="forDesc">
+            <p class="desc">Opis: {{trip.description}}</p>
+            <p class="desc">Cena: {{trip.price}}{{trip.currency}}</p>
+        </div>
+        <h1>Średnia ocena użytkowników</h1>
+        <app-show-rating [trip]="trip"></app-show-rating>
+        <app-trip-rating [trip]="trip"></app-trip-rating>
+    </div>
+
+    <div id="rightCont">
+        <div id="tripOffer" *ngFor="let trip of trips">
+        <h1>Aktulana oferta:</h1>
+        <p>Rozpoczęcie: {{trip.beginDate}}</p>
+        <p>Zakończenie: {{trip.endDate}}</p>
+        <div id="reservCont">
+            <p id="spots">Wolne miejsca: {{trip.maxSpots - trip.amount}}</p>
+            <div id="reservationsMade" *ngIf="trip.amount > 0">+{{trip.amount}}</div>
+        </div>
+        <button *ngIf="trip.maxSpots-trip.amount > 0" id="reserve" class="tripButton" (click)="addClick(trip)">Zarezerwuj</button>
+        <button *ngIf="trip.amount > 0" id="resign"class="tripButton" (click)="removeClick(trip)">Rezygnuj</button>
+        </div>
+    </div>
+
+</div>

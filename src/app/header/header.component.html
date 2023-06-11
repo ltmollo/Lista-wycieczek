@@ -1,0 +1,25 @@
+<header>
+    <a routerLink="/register" routerLinkActive="active" *ngIf="auth.userData == null"><div class="link">Rejestracja</div></a>
+    <a routerLink="/logIn" routerLinkActive="active" *ngIf="auth.userData == null"><div class="link">Zaloguj</div></a>
+    <div *ngIf = "auth.userData != null" id="email">{{auth.userData.email}}</div>
+    <div *ngIf = "auth.userData != null" (click)="auth.signOut()" class="link">Wyloguj</div>
+
+    <div id="forNotifications" *ngIf="auth.userRoles?.client">
+        <img src = './assets/img/icons/bell.png'>
+        <div id="notifications" *ngIf="checkAmount() > 0">{{counter}}</div>
+        <input type="checkbox">
+
+        <ng-container *ngIf="counter > 0">
+            <div id="toRollBasket">
+                <div class="productsInBasket title">
+                    <p id="info">Zbliżające się wycieczki:</p>
+                </div>
+                <ng-container *ngFor="let trip of trips">
+                    <div class="productsInBasket" *ngIf="notifications(trip)">
+                        <p>{{trip.name}}</p>
+                    </div>
+                </ng-container>
+            </div>
+        </ng-container>
+    </div>
+</header>

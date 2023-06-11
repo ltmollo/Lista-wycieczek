@@ -1,0 +1,33 @@
+<div id="container">
+    <div *ngIf="itemsInBasket.length == 0">
+        <h1>Twój koszyk jest pusty</h1>
+    </div>
+
+    <ng-container *ngIf="itemsInBasket.length > 0">
+        <div class="productsInBasket">
+            <div class="justify"></div> 
+            <p class="name">Nazwa:</p> 
+            <p class="amount"> Ilość: </p>
+            <p class="price"> Cena:</p>
+        </div>
+        <ng-container *ngFor="let trip of itemsInBasket">
+            <div class="productsInBasket" *ngIf="trip.amount > 0">
+                <img src={{trip.imageLink}} alt ="zdjęcie">
+                <p class="name">{{trip.name}}</p>
+                <div class="amountCont">
+                    <div class="addBtn" *ngIf="trip.amount < trip.maxSpots" (click)="addClick(trip)">➕</div>
+                    <p class="amount">{{trip.amount}}</p>
+                    <div *ngIf="trip.amount > 0" class="removeBtn" (click)="removeClick(trip)">➖</div>
+                </div>
+                <p class="price">{{trip.price}}{{trip.currency}}</p>
+            </div>
+        </ng-container>
+        <div class="productsInBasket"> 
+            <div class="justify"></div>
+            <p class="name">Razem:</p> 
+            <p class="amount">{{countAmount()}}</p>
+            <p class="price"> {{countPrice()}}$</p>
+        </div>
+        <button id="buy" (click) = "buy()">Zakup</button>
+    </ng-container>
+</div>

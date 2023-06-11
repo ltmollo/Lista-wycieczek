@@ -1,0 +1,36 @@
+<div id="basket">
+    <div id="container">
+        <div id="amount" *ngIf="countAmount() > 0"> + {{countAmount()}} </div>
+        <img src="../../assets/img/icons/shoppingCart.png">
+    </div>
+    <input #basket type="checkbox">
+
+    <div id="toRollBasket">
+        <ng-container *ngIf="checkIfAnygthingInBasket()">
+            <div class="productsInBasket"> 
+                <p class="name">Nazwa:</p> 
+                <p class="amount"> Ilość: </p>
+                <p class="price"> Cena:</p>
+            </div>
+            <ng-container *ngFor="let trip of trips">
+                <div class="productsInBasket" *ngIf="trip.amount > 0">
+                    <p class="name">{{trip.name}}</p>
+                    <p class="amount">{{trip.amount}}</p>
+                    <p class="price">{{trip.price}}{{trip.currency}}</p>
+                </div>
+            </ng-container>
+            <div class="productsInBasket"> 
+                <p class="name">Razem:</p> 
+                <p class="amount">{{countAmount()}}</p>
+                <p class="price"> {{countPrice()}}$</p>
+            </div>
+            <a routerLink="/basket" routerLinkActive="active"><div class="link" (click) = "closeBasket(basket)">Kup</div></a>
+        </ng-container>
+        <ng-container *ngIf="!checkIfAnygthingInBasket()">
+            <div class="productsInBasket">
+                <p id="emptyBask">Twój koszyk jest pusty!</p>
+            </div>
+        </ng-container>
+    </div>
+</div>
+

@@ -1,0 +1,132 @@
+#background{
+    width: 100%;
+    display: flex;
+}
+
+.tripCard{
+    margin-top: 55px;
+    margin-right: 20px;
+    width: 250px;
+    height: 530px;
+    border: 3px solid black;
+    background-color: #6691FF;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.fewSpots{
+    background-color: rgb(213, 77, 77);
+}
+
+.noSpots{
+    background-color: grey;
+}
+
+.doNotDisplay{
+    display: none;
+}
+
+.noSpotsLeft{
+    color: rgb(187, 11, 11);
+    text-shadow: 1px 1px black;
+    margin-bottom: 0;
+    margin-top: 0;
+    margin-bottom: -15px;
+}
+
+img{
+    margin-top: 14px;
+    width: 140px;
+    height: 140px;
+    border-radius: 100%;
+    border: 1.4px solid white;
+    margin-left: 55px;
+    user-select: none;
+    transition: 1s;
+}
+
+img:hover{
+    opacity: 0.5
+}
+
+#forTrips{
+    width: 100%;
+    overflow-x: hidden;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+}
+
+h2{
+    font-family:Arial, Helvetica, sans-serif;
+    margin-left: 10.5px;
+    color: white;
+    font-size: 20px;
+    text-shadow: 3px 1px black;
+}
+
+.titleCont{
+    background-color: #4766B3;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    clip-path: polygon(0 0, 100% 0 , 90% 100%, 0 100%);
+    padding-right: 10%;
+}
+
+p{
+    margin-left: 12px;
+    font-size: 12px;
+    height: 26px;
+    color: #3b3a3a;
+    font-weight: bold;
+    text-shadow: 0.5px 0.5px black;
+}
+
+.btnContainer{
+    width: 100%;
+    display: grid;
+    grid-template-columns: auto auto auto;
+}
+
+.price{
+    font-style: italic;
+    font-size: 30px;
+    margin: 0 0 0 11px;
+}
+
+.likesCont{
+    width: 100%;
+    height: 42px;
+    display: flex;
+    padding-left: 15px;
+}
+
+.deleteBtn{
+    width: 80%;
+    height: 28px;
+    margin-left: 10%;
+    margin-top: 10px;
+    border-radius: 10px;
+    font-size: 14px;
+    background-color: #5454c5;
+    color: white;
+    text-shadow: 2px 2px black;
+    transition: 1s;
+}
+
+.capacity{
+    margin-top: 3.5px;
+    margin-left: 5px;
+}
+
+.deleteBtn:hover{
+    background-color: rgb(187, 11, 11);
+}
+
+@media only screen and (max-width: 1000px) {
+    #forTrips{
+        flex-direction: column;
+    }
+}

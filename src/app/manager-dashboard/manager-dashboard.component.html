@@ -1,0 +1,55 @@
+<div id="background">
+    <div id="forTrips" class="formsContainer">
+      <h2>Modyfikuj wycieczkę</h2>
+
+        <form [formGroup]= "changeDest">
+            <div>
+                <label for="destination">Cel podróży:</label>
+                <input id="destination" type="text" formControlName="destination">
+            <button class="modify" type="submit" (click) = 'checkDest()'>Zmień</button>
+            </div>
+        </form>
+
+        <form [formGroup]="changeBegin">
+          <div>
+            <label for="beginDate">Data rozpoczęcia:</label>
+            <input id="beginDate" type="date" formControlName="beginDate">
+            <button class="modify" type="submit" (click) = 'checkBegin()'>Zmień</button>
+          </div>
+        </form>
+        
+        <form [formGroup]="changeEnd">
+          <div>
+            <label for="endDate">Data zakończenia:</label>
+            <input id="endDate" type="date" formControlName="endDate">
+            <button class="modify" type="submit" (click) = 'checkEnd()'>Zmień</button>
+          </div>
+        </form>
+
+        <form [formGroup]="changeMaxSpots">
+          <div>
+            <label for="maxSpots">Maksymalna ilość miejsc:</label>
+            <input id="maxSpots" type="text" formControlName="maxSpots">
+            <button class="modify" type="submit" (click) = 'checkSpots()'>Zmień</button>
+          </div>
+        </form>
+  
+        <form [formGroup]="changeDescription">
+          <div>
+            <label for="description">Krótki opis:</label>
+            <input id="description" type="text" formControlName="description">
+            <button class="modify" type="submit" (click) = 'checkDesc()'>Zmień</button>
+          </div>
+        </form>
+        
+        <form [formGroup]="changePrice">
+          <div>
+            <label for="price">Cena:</label>
+            <input id="price" type="text" formControlName="price">
+            <button class="modify" type="submit" (click) = 'checkPrice()'>Zmień</button>
+          </div>
+        </form>
+        
+        <p *ngIf="!canAdd">Nieprawidłowe dane!</p>
+    </div>
+  </div>

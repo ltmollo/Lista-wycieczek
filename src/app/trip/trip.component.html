@@ -1,0 +1,41 @@
+<div id="background">
+    <app-trip-filters [trips]=trips (emitDestination)= "takeFilteredDestinations($event)" [maximumPrice]="getMaxPrice()" [minimumPrice]="getMinPrice()" [latestMaxPriceWanted] = "latestMaxPriceWanted" [latestMinPriceWanted]="latestMinPriceWanted" (EmitMaxPrice)="maxPriceToFilter($event)" (EmitMinPrice)="minPriceToFilter($event)" (emitStars)=" getMinNumberOfStars($event)" (emitMaxStars)="getMaxNumberOfStars($event)" (emitBeginDate)="getMinBeginDate($event)" (emitEndDate)="getMaxEndDate($event)"></app-trip-filters>
+    <div id="forTrips">
+
+        <div class="sumOfTrips" [ngStyle]="{
+            'background-color': getAmountOfReservations() > 10 ? 'green' : 'rgb(173, 10, 10)'
+        }">Ilość zarezerwowanych wycieczek: {{ getAmountOfReservations() }}</div>
+        <ng-container *ngFor="let trip of trips">
+            <ng-container *ngIf = "(trip.destination | tripFilterByDestination : destinationOfFilteredTrips) && (trip.price | tripFilterByMaxPrice : latestMaxPriceWanted) && (trip.price | tripFilterByMinPrice : latestMinPriceWanted) && (trip.stars | tripFilterByStars : minStarsWanted : maxStarsWanted) && (trip.endDate | tripFilterByEndDate : maxEndDate) && (trip.beginDate | tripFilterByBeginDate : minBeginDate)">
+                <div class = "tripCard" [ngClass] = "{ 'fewSpots' : trip.maxSpots - trip.amount < 4,
+                                                        'noSpots' : trip.maxSpots == trip.amount,
+                                                        'maxPrice' : trip.price == maxPriceToDisplay(),
+                                                        'minPrice' : trip.price == minPricetoDisplay()}" >
+                    <div class="titleCont">
+                        <h2> {{trip.name | uppercase}} </h2>
+                    </div>
+                    <a routerLink="/trips/{{trip.name.toLowerCase()}}"><img src = {{trip.imageLink}} alt = {{trip.destination}}></a>
+                    <p> Cel podróży: {{trip.destination | uppercase }}</p>
+                    <p> Data rozpoczęcia: {{trip.beginDate}}</p>
+                    <p> Data zakończenia: {{trip.endDate}}</p>
+                    <p>Maksymalna ilość miejsc: {{trip.maxSpots}}</p>
+                    <p>{{trip.description}}</p>
+                    <div class="btnContainer">
+                        <p class="price">{{trip.currency}}{{trip.price}}</p>
+                        <ng-container *ngIf="auth.userRoles?.client">
+                            <div class="addBtn" [ngClass] = "{ 'doNotDisplay' : trip.amount >= trip.maxSpots}" (click)="addClick(trip)">➕</div>
+
+                            <div *ngIf="trip.amount > 0" class="removeBtn" (click)="removeClick(trip)">➖</div>
+                        </ng-container>
+                    </div>
+
+                    <div class="likesCont">
+                    <app-show-rating [trip] = trip ></app-show-rating>
+                        <p class="capacity" *ngIf="auth.userRoles?.client">ilość: {{trip.amount}}</p>
+                    </div>
+                    <p class = "noSpotsLeft" *ngIf = "trip.amount >= trip.maxSpots">Brak wolnych miejsc</p>
+                </div>
+            </ng-container>
+        </ng-container>
+    </div>
+</div>

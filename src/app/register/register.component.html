@@ -1,0 +1,25 @@
+<div id="background">
+  <div id="container">
+    <div class="formsContainer">
+      <h2>Zarejestruj konto</h2>
+
+      <form [formGroup]="regForm">
+        <div>
+          <label for="name">E-mail</label>
+          <input id="name" type="text" formControlName="login" />
+        </div>
+    
+        <div>
+          <label for="type">Hasło</label>
+          <input id="password" type="password" formControlName="password" />
+        </div>
+      </form>
+      <button type="submit" (click)="submitForm()">Zatwierdź</button>
+      <div *ngIf="showError" id="errors">
+        <p *ngIf="!regForm.get('login')!.valid" class="error">Wprowadź poprawny e-mail!</p>
+        <p *ngIf="!regForm.get('password')!.valid" class="error">Hasło musi zawierać przynajmniej 6 znaków!</p>
+      </div>
+      <p *ngIf="showOk">Poprawnie zarejestrowano!</p>
+    </div>
+  </div>
+</div>

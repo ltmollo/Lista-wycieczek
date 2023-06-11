@@ -1,0 +1,24 @@
+<div id="forTrips">
+    <div class = "tripCard" [ngClass] = "{ 'fewSpots' : trip.maxSpots - trip.amount < 4,
+    'noSpots' : trip.maxSpots == trip.amount}">
+        <div class="titleCont">
+            <h2> {{trip.name | uppercase}} </h2>
+        </div>
+        <a routerLink="/trips/{{trip.name.toLowerCase()}}"><img src = {{trip.imageLink}} alt = {{trip.destination}}></a>
+        <p> Cel podróży: {{trip.destination | uppercase }}</p>
+        <p> Data rozpoczęcia: {{trip.beginDate}}</p>
+        <p> Data zakończenia: {{trip.endDate}}</p>
+        <p>Maksymalna ilość miejsc: {{trip.maxSpots}}</p>
+        <p>{{trip.description}}</p>
+        <div class="btnContainer">
+            <p class="price">{{trip.currency}}{{trip.price}}</p>
+        </div>
+
+        <div class="likesCont">
+            <app-show-rating [trip] = trip ></app-show-rating>
+        </div>
+        <p class = "noSpotsLeft" *ngIf = "trip.amount >= trip.maxSpots">Brak wolnych miejsc</p>
+        <button class="deleteBtn" (click)="(deleteTrip(trip))">Usuń wycieczkę</button>
+    </div>
+    <app-manager-dashboard [trip] = 'trip'></app-manager-dashboard>
+</div>

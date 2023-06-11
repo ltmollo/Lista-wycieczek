@@ -1,0 +1,142 @@
+nav{
+    min-width: 100vw;
+    height: 100px;
+    background-color: #004AFE;
+    display: flex;
+    margin-bottom: 10px;
+}
+
+h1{
+    font-family:Georgia, 'Times New Roman', Times, serif;
+    text-align: center;
+    width: 100%;
+    color: white;
+    text-shadow : 1px 2px black
+}
+
+#logoContainer{
+    background-color: #0033B3;
+    width: 250px;
+    display: flex;
+    align-items: center;
+    height: 50px;
+    border-radius: 20px;
+    align-self: center;
+    margin-left: 50px;
+}
+
+.link{
+    
+    width: 150px;
+    text-align: center;
+    height: 50px;
+    font-size: 20px;
+    padding-top: 15px;
+    box-sizing: border-box;
+}
+
+a{
+    color: rgb(14, 14, 83);
+    text-decoration: none;
+    width: 150px;
+    height: 50px;
+    margin-top: 25px;
+    margin-left: 30px;
+    background-color: white;
+    border-radius: 10px;
+    transition: 1s;
+}
+
+a:hover{
+    background-color: #0033B3;
+    color: white;
+}
+
+#container{
+    display: flex;
+}
+
+input{
+    display: none;
+    opacity: 0;
+}
+
+@media only screen and (max-width: 1300px){
+    #container{
+        flex-direction: column;
+        position: absolute;
+        top: 160px;
+        width: 200px;
+        height: 350px;
+        right: -250px;
+        transform: translate(-240px, 0);  
+        transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0);
+        z-index: 1;
+        background-color: #0033B3;
+        border-radius: 10px;
+        justify-content: center;
+    }
+
+    a{
+        margin-left: 0;
+        border-radius: 0;
+        width: 100%;
+    }
+
+    .link{
+        width: 100%;
+    }
+
+    input{
+        position: absolute;
+        display: block;
+        right: 0;
+        top:117px;
+        width: 35px;
+        height: 35px;
+        z-index: 1;
+    }
+
+    input:not(:checked) ~ #container{
+        transform: none;
+    }
+    .bar1, .bar2, .bar3, .bar4 {
+        border: 1px solid black;
+        display: block;
+        width: 33px;
+        height: 4px;
+        margin-bottom: 5px;
+        background: white;
+        border-radius: 3px;  
+        transform-origin: 4px 0px; 
+        transition: 0.4s;
+        position: absolute;
+        right: 2px;
+      }
+
+    .bar1{
+        top: 120px;
+    }
+
+    .bar2{
+        top: 130px;
+    }
+
+    .bar3{
+        top: 140px;
+    }
+
+    .bar4{
+        top: 150px;
+    }
+
+    input:checked ~.bar2 {
+        transform: translate(-5px, 15px) rotate(-45deg);
+      }
+      
+    input:checked ~ .bar1, input:checked ~ .bar4 {opacity: 0;}
+      
+    input:checked ~ .bar3 {
+        transform: translate(0, -15px) rotate(45deg);
+      }
+}

@@ -1,0 +1,62 @@
+<div id="background">
+  <div id="forTrips" class="formsContainer">
+    <h2>Dodaj wycieczkę</h2>
+    <form [formGroup]= "addNewTrip">
+        <div class="labelCont">
+          <label for="name">Nazwa wycieczki:</label>
+          <input id="name" type="text" formControlName="name">
+        </div>
+      
+        <div class="labelCont">
+          <label for="destination">Cel podróży:</label>
+          <input id="destination" type="text" formControlName="destination">
+        </div>
+      
+        <div class="labelCont">
+          <label for="beginDate">Data rozpoczęcia:</label>
+          <input id="beginDate" type="date" formControlName="beginDate">
+        </div>
+      
+        <div class="labelCont">
+          <label for="endDate">Data zakończenia:</label>
+          <input id="endDate" type="date" formControlName="endDate">
+        </div>
+      
+        <div class="labelCont">
+          <label for="maxSpots">Maksymalna ilość miejsc:</label>
+          <input id="maxSpots" type="text" formControlName="maxSpots">
+        </div>
+
+        <div class="labelCont">
+          <label for="description">Krótki opis:</label>
+          <input id="description" type="text" formControlName="description">
+        </div>
+      
+        <div class="labelCont">
+          <label for="price">Cena:</label>
+          <input id="price" type="text" formControlName="price">
+        </div>
+      
+        <div class="labelCont">
+          <label for="imageLink">Link do zdjęcia:</label>
+          <input id="imageLink" type="text" formControlName="imageLink">
+        </div>  
+        
+        <div class="labelCont">
+          <label for="imageLink2">Link do zdjęcia szczegółowego:</label>
+          <input id="imageLink2" type="text" formControlName="imageLink2">
+        </div>
+        
+        <div class="labelCont">
+          <label for="imageLink3">Link do zdjęcia szczegółowego:</label>
+          <input id="imageLink3" type="text" formControlName="imageLink3">
+        </div>
+      </form>
+      <button id="addNewTrip" type="submit" (click) = 'checkForm()'>Dodaj</button>
+      <p *ngIf="!canAdd">Nieprawidłowe dane!</p>
+  </div>
+</div>
+
+<div class="modifyTrip" *ngFor="let trip of trips">
+  <app-edit-trip [trip] = 'trip'></app-edit-trip>
+</div>

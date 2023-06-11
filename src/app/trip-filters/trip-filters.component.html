@@ -1,0 +1,28 @@
+<div id="filterMenu">
+    <h1>Filtruj po celu podróży:</h1>
+    <div id="countriesCont">
+        <div class="countries" *ngFor = "let trip of trips">
+            <input type="checkbox" (change)="addFilteredTrips(trip.destination)">
+            <label> {{ trip.destination | uppercase }}</label>
+        </div>
+    </div>
+
+    <h1> Filtruj po cenach:</h1>
+    <div id="filterPrices">
+        <app-double-slide-bar-price [lowestPriceWanted]="latestMinPriceWanted" [maxPriceWanted]="latestMaxPriceWanted" [minValue]="minimumPrice" [maxValue]="maximumPrice" (emitMaxPriceWanted)="filterPrice($event)" (emitMinPriceWanted)="filterMinPrice($event)"></app-double-slide-bar-price>
+    </div>
+
+    <h1> Filtruj po gwiazdkach:</h1>
+    <div id="filterStars">
+        <app-double-slide-bar-stars (emitMinStarsWanted)="filterStars($event)" (emitMaxStarsWanted)="filterMaxStars($event)"></app-double-slide-bar-stars>
+    </div>
+
+    <h1>Filtruj po rozpoczęciu:</h1>
+    <div id="filterBegin">
+        <input #beginDate type="date" (change)="filterBeginDate(beginDate.value)"><br>
+    </div>
+    <h1>Filtruj po zakończeniu:</h1>
+    <div id="filterEnd">
+        <input #endDate type="date" (change)="filterEndDate(endDate.value)"><br>
+    </div>
+</div>

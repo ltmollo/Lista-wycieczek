@@ -1,0 +1,23 @@
+<div id="background">
+  <div id="container">
+    <div class="formsContainer">
+      <h2>Zaloguj się</h2>
+      <form [formGroup] = "logInForm">
+        <div>
+          <label for="name">E-mail</label>
+          <input id="name" type="text" formControlName="login" />
+        </div>
+    
+        <div>
+          <label for="type">Hasło</label>
+          <input id="password" type="password" formControlName="password" />
+        </div>
+      </form>
+      
+      <button type="submit" (click)="submitForm()">Zatwierdź</button>
+
+      <p *ngIf="showError" class="error">Wprowadź poprawne dane!</p>
+      <p *ngIf="showOk" class="error">Poprawnie zalogowano!</p>
+    </div>
+  </div>
+</div>

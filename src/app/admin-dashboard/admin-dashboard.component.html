@@ -1,0 +1,46 @@
+<div id="background">
+    <div id="mainContainer">
+        <h1>Admin Dashboard</h1> 
+        <p id="persitence">Aktualny tryb persystencji logowania: {{currentPersitence}}</p>
+
+        <div class="container">
+            <p id="choose">Wybierz tryb persystencji logowania:</p>
+            <select [(ngModel)] = "currentPersitence" (ngModelChange)="choosePersistence()">
+                <option>local</option>
+                <option>session</option>
+                <option>none</option>
+            </select>
+        </div>
+        
+    <div class="userContainer" *ngFor="let user of users">
+        <p class="user">Użytkownik: {{user.email}}</p>
+        <div class="rolesContainer">
+            <div class="changeContainer">
+                <p>Admin: {{user.roles.admin}}</p>
+                <button class="changeBut givePerm" *ngIf="!user.roles.admin" (click) = 'givePermission(user.uid, "admin", !user.roles.admin)' >Nadaj</button>
+                <button class="changeBut takePerm" *ngIf="user.roles.admin" (click) = 'givePermission(user.uid, "admin", !user.roles.admin)' >Odbierz</button>
+            </div>
+
+            <div class="changeContainer">
+                <p>Manager: {{user.roles.manager}}</p>
+                <button class="changeBut givePerm" *ngIf="!user.roles.manager" (click) = 'givePermission(user.uid, "manager", !user.roles.manager)' >Nadaj</button>
+                <button class="changeBut takePerm" *ngIf="user.roles.manager" (click) = 'givePermission(user.uid, "manager", !user.roles.manager)' >Odbierz</button>
+            </div>
+
+            <div class="changeContainer">
+                <p>Klient: {{user.roles.client}}</p>
+                <button class="changeBut givePerm" *ngIf="!user.roles.client" (click) = 'givePermission(user.uid, "client", !user.roles.client)' >Nadaj</button>
+                <button class="changeBut takePerm" *ngIf="user.roles.client" (click) = 'givePermission(user.uid, "client", !user.roles.client)' >Odbierz</button>
+            </div>
+    
+            <div class="changeContainer">
+                <p>Zbanowany: {{user.roles.banned}}</p>
+                <button class="changeBut givePerm" *ngIf="!user.roles.banned" (click) = 'givePermission(user.uid, "banned", !user.roles.banned)' >Zbanuj</button>
+                <button class="changeBut takePerm" *ngIf="user.roles.banned" (click) = 'givePermission(user.uid, "banned", !user.roles.banned)' >Odbanuj</button> 
+            </div>
+
+        </div>
+    </div>
+
+    </div>
+</div>

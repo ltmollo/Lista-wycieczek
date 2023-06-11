@@ -1,0 +1,76 @@
+#starsCont{
+    display: flex;
+    justify-content: center;
+    margin-top: 5px;
+}
+
+.star{
+    padding: 0;
+    margin: 0;
+}
+
+#filterMenu{
+    background-color: #a8dadc;
+    border-radius: 10px;
+    margin-right: 5px;
+    display: flex;
+    flex-direction: column;
+    padding: 0 10px 20px 10px;
+    width: 300px;
+    margin-left: 15px;
+}
+
+label{
+    font-size: 20px;
+    margin-left: 10px;
+    font-family:'Courier New', Courier, monospace;
+}
+
+.countries{
+    display: flex;
+}
+
+.countries input{
+    width: 20px;;
+}
+
+h1{
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 25px;
+}
+
+#filterPrices{
+    align-self: center;
+}
+
+#filterStars{
+    align-self: center;
+}
+.filterRes{
+    align-self: center;
+    margin-bottom: 0;
+}
+
+#filterBegin, #filterEnd{
+    align-self: center;
+    text-align: center;
+}
+
+@media only screen and (max-width: 995px){
+    #filterMenu{
+        margin-top: 20px;
+        display: flex;
+        padding: 0 10px 20px 10px;
+        width: 70vw;
+    }
+
+    h1{
+        text-align: center;
+    }
+
+    #countriesCont{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+}

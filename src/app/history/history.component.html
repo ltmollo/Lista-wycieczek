@@ -1,0 +1,46 @@
+<div id="background">
+    <div id="filterMenu" *ngIf="trips.length != 0">
+        <h1>Filtruj po statusie:</h1>
+        <div>
+            <input type="checkbox" (change)="addTrips(-1)">
+            <label>Wycieczki oczekujące na rozpoczęcie</label><br>
+        </div>
+
+        <div>
+            <input type="checkbox" (change)="addTrips(0)">
+            <label>Wycieczki w trakcie</label><br>
+        </div>
+
+        <div>
+            <input type="checkbox" (change)="addTrips(1)">
+            <label>Wycieczki zakończone</label>
+        </div>
+    </div>
+
+    <div id="forTrips" *ngIf="trips.length != 0">
+        <ng-container *ngFor="let trip of trips">
+            <div class = "tripCard" [ngClass] = "{ 'pre' : checkStatus(trip) == -1,
+            'current' : checkStatus(trip) == 0,
+            'past' : checkStatus(trip) == 1}" *ngIf="filterTrips.length == 0 || filterTrips.includes(checkStatus(trip))">
+                <div class="titleCont">
+                    <h2> {{trip.name | uppercase}} </h2>
+                </div>
+                <a routerLink="/trips/{{trip.name.toLowerCase()}}"><img src = {{trip.imageLink}} alt = {{trip.destination}}></a>
+                <p> Cel podróży: {{trip.destination | uppercase }}</p>
+                <p> Data kupna: {{trip.boughtDate}}</p>
+                <p> Data rozpoczęcia: {{trip.beginDate}}</p>
+                <p> Data zakończenia: {{trip.endDate}}</p>
+                <p> Ilość kupionych miejsc: {{trip.amount}}</p>
+                <p> Opis: {{trip.description}}</p>
+                <div class="btnContainer">
+                    <p class="price">{{trip.currency}}{{trip.price}}</p>
+                </div>
+
+                <div class="likesCont">
+                <app-show-rating [trip] = trip ></app-show-rating>
+                </div>
+            </div>
+        </ng-container>
+    </div>
+    <h3 class="headline" *ngIf="trips.length == 0">Jeszcze nie zakupiłeś żadnej wycieczki</h3>
+</div>

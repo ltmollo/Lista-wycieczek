@@ -1,0 +1,14 @@
+#background{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+h1{
+    text-align: center;
+    width: 100%;
+    color: black;
+    text-shadow: 2px 4px #a8dadc;
+    font-size: 50px;
+    font-family: fantasy ;
+}

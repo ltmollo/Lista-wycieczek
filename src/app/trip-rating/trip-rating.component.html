@@ -1,0 +1,46 @@
+<h1>Dodaj ocenę:</h1>
+<div id="starsCont" *ngIf="((canRate && !auth.userRoles?.manager && !auth.userRoles?.banned) || auth.userRoles?.admin)">
+    <p class = "stars" [ngClass] = "{ 'rated' : rate >= 1, 'hovered' : hover >= 1}" (click) = "changeRating(1)" (mouseover) = "hoverTheElements(1)" (mouseout) = "hoverTheElements(0)">★</p>
+    <p class = "stars" [ngClass] = "{ 'rated' : rate >= 2, 'hovered' : hover >= 2, 'unhovered' : hover != 0 && hover < 2}" (click) = "changeRating(2)" (mouseover) = "hoverTheElements(2)" (mouseout) = "hoverTheElements(0)">★</p>
+    <p class = "stars" [ngClass] = "{ 'rated' : rate >= 3, 'hovered' : hover >= 3, 'unhovered' : hover != 0 && hover < 3}" (click) = "changeRating(3)" (mouseover) = "hoverTheElements(3)" (mouseout) = "hoverTheElements(0)">★</p>
+    <p class = "stars" [ngClass] = "{ 'rated' : rate >= 4, 'hovered' : hover >= 4, 'unhovered' : hover != 0 && hover < 4}" (click) = "changeRating(4)" (mouseover) = "hoverTheElements(4)" (mouseout) = "hoverTheElements(0)">★</p>
+    <p class = "stars" [ngClass] = "{ 'rated' : rate >= 5, 'hovered' : hover >= 5, 'unhovered' : hover != 0 && hover < 5}" (click) = "changeRating(5)" (mouseover) = "hoverTheElements(5)" (mouseout) = "hoverTheElements(0)">★</p>
+</div>
+
+<p class="info" id="firstInfo" *ngIf="!trip.bought && !auth.userRoles?.manager">Musisz zakupić wycieczkę by wystawić ocenę</p>
+<p class="info" id="firstInfo" *ngIf="auth.userRoles?.manager && !auth.userRoles?.admin">Manager nie może wystawiać ocen</p>
+<p class="info" id="firstInfo" *ngIf="auth.userRoles?.banned">Jesteś zbanowany, nie możesz wystawić oceny</p>
+
+<h3>Opinie użytkowników:</h3>
+<p class="info" *ngIf="reviews.length > 0">Ilość opinii: {{reviews.length}}</p>
+<div id="tripReviews" *ngFor="let review of reviews">
+  <div class="labelCont">
+      <p>Użytkownik: {{review.nick}}</p>
+     <p *ngIf="review.date != null && review.date.length == 10">Data: {{review.date}}</p>
+  </div>
+    <div class="reviewText"> {{review.review}}</div>
+</div>
+<p class="info" *ngIf="reviews.length == 0">Jeszcze nikt nie dodał opinii o wycieczce</p>
+
+<div id="formContainer" *ngIf="(auth.userRoles?.client && canRate || auth.userRoles?.manager) && !auth.userRoles?.banned">
+    <h2>Dodaj opinię:</h2>
+    <form [formGroup]="review">
+          <div class="labelCont">
+            <label for="date">Data zakupu:</label>
+            <input id="date" type="date" formControlName="date" />
+          </div>
+
+          <div class="labelCont">
+            <label for="review">Twoja opinia:</label>
+          </div>
+          <textarea id="review" type="text" formControlName="review" cols=60 rows="5"></textarea>
+      </form>
+      <button id="submitButton" type="submit" (click)="submitForm()">Dodaj recenzję</button>
+      <div class="errors" *ngIf="!canAdd">
+          <div *ngIf="!review.get('nickname')!.valid">Nick musi zawierać od 4 do 20 znaków</div>
+          <div *ngIf="!review.get('review')!.valid">Twoja opinia musi zawierać od 50 do 500 znaków</div>
+      </div>
+</div>
+
+<p class="info" *ngIf="!trip.bought && !auth.userRoles?.manager">Musisz zakupić wycieczkę aby dodać opinię.</p>
+<p class="info" *ngIf="auth.userRoles?.banned">Jesteś zbanowany, nie możesz dodać opinii</p>

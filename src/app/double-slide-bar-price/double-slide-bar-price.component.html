@@ -1,0 +1,11 @@
+
+<div class="wrapper">
+    <div class="values">
+        <p *ngIf="maxPriceWanted != 0 && lowestPriceWanted != 0">${{lowestPriceWanted}} - ${{maxPriceWanted}}</p>
+    </div>
+    <div class="container">
+        <div class="sliderTrack" #sideTrack></div>
+        <input type="range" #secondSlider min="{{minValue}}" max="{{maxValue}}" value="{{maxPriceWanted}}" id="slider-2" (change)="slideTwo(secondSlider, sideTrack, true)">
+        <input type="range" #firstSlider min="{{minValue}}"  max="{{maxValue}}" value="{{lowestPriceWanted}}" id="slider-1" (change)="slideOne(firstSlider , sideTrack, true)">
+    </div>
+</div>
